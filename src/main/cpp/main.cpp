@@ -13,7 +13,9 @@
 
 int main(int argc, char* argv[])
 {
-
+#if EXECUTE_PREAMBLE
+	return csc232::Preamble(argc, argv);
+#endif
 
 	return EXIT_SUCCESS;
 }
@@ -21,6 +23,7 @@ int main(int argc, char* argv[])
 int csc232::Preamble(int argc, char* argv[])
 {
 	std::cout << "Hello, Main Target!" << std::endl;
+
 	// An input file to process
 	std::string input_file;
 
