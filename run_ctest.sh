@@ -15,6 +15,6 @@ echo ""
 cd ./build
 
 echo ""
-echo "Running ctest..."
+echo "Running google-tests..."
 echo ""
-ctest
+./google-tests
