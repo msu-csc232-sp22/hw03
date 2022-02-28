@@ -11,6 +11,7 @@
 
 #include "csc232.h"
 
+using csc232::Display;
 using csc232::MaxNumCoins;
 using csc232::OpenDataFile;
 using csc232::ProcessDataFile;
@@ -99,9 +100,12 @@ void csc232::ProcessDataFile(std::ifstream& data_file)
 		}
 
 		// Compute the maximum number of gold coins that can be collected
+		std::cout << "For the following grid of gold coins:\n\n";
+		Display(grid, rows, cols);
+
 		int max = MaxNumCoins( grid, rows, cols );
 		std::cout << std::endl
-					<< "Maximum number of golden coins we can collect is " << max
+					<< "Thus, in this scenario, the maximum number of golden coins we can collect is " << max
 					<< std::endl << std::endl;
 
 		// we're done processing the current grid so let's get rid of it. If more

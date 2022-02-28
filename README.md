@@ -59,19 +59,45 @@ Another sample input file with three tables is as follows:
 1  2  3  4  6
 ```
 
-For each input table, display the corresponding cache table followed by a message indicating the maximum number of golden coins that we can collect. The following shows the expected output of the `main` target. The tables shown here are the "cost matrices," where each cell contains the maximum number of gold coins that could have been collected on a journey to that cell starting from (0, 0).
+Ultimately, for the `main` target, you want to meet the following specification: For each input table, display that table. Also display the corresponding cache table followed by a message indicating the maximum number of golden coins that we can collect.
+
+The following shows the expected output of the `main` target when you have successfully completed this assignment. The tables shown here are the "cost matrices," where each cell contains the maximum number of gold coins that could have been collected on a journey to that cell starting from (0, 0).
 
 ```text
+For the following grid of gold coins:
+
+    5    3    9
+    7    2    2
+    2    3    1
+
+we obtain the following total cost table:
+
     5    8   17
    12   14   19
    14   17   20
 
 Maximum number of golden coins we can collect is 20
 
+For the following grid of gold coins:
+
+    7    2    4
+    1    5    1
+
+we obtain the following total cost table:
+
     7    9   13
     8   14   15
 
 Maximum number of golden coins we can collect is 15
+
+For the following grid of gold coins:
+
+    7    3    4    5    3
+    2    1    4    8    2
+    9    2    4    3    1
+    1    2    3    4    6
+
+we obtain the following total cost table:
 
     7   10   14   19   22
     9   11   18   27   29
@@ -79,6 +105,7 @@ Maximum number of golden coins we can collect is 15
    19   22   27   34   40
 
 Maximum number of golden coins we can collect is 40
+
 ```
 
 ## Objective
@@ -113,7 +140,12 @@ _You may have to type the `q` character to get back to the command line prompt a
 
 ## Tasks
 
-Compare this problem to the goal of the Jump It game. Use the development of the solution to that game outlined in Lecture to devise a DP solution to this problem. Note the differences too; in the Jump It game, the goal was to _minimize_ a "cost" and here the goal is to _maximize_ a "cost." Also think about your approach: Do you want to tackle this using _memoization_ or _tabulation_? How does that choice affect your design decisions?
+This assignment contains essentially two tasks:
+
+1. Provide an implementation of the `Display` function to display the contents of a two-dimensional array in a neat, tabular fashion (with each table value printing in a field width of 5 spaces, right-aligned)
+2. Provide an implementation of the `MaxNumCoins` using Dynamic Programming techniques.
+
+Compare this problem to the goal of the Jump It game. Use the development of the solution to that game outlined in our lectures to devise a Dynamic Programming solution to this problem. Note the differences too; in the Jump It game, the goal was to _minimize_ a "cost" and here the goal is to _maximize_ a "cost." Also think about your approach: Do you want to tackle this using _memoization_ or _tabulation_? How does that choice affect your design decisions?
 
 Look for and address all the `TODO` comments in the project; implement the functions in [csc232.h](include/csc232.h). Be sure to remove the `TODO` comments once you've completed the requested task.
 
