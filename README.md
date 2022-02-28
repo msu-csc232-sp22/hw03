@@ -6,10 +6,10 @@ A homework assignment related to dynamic programming in CSC232.
 
 Before proceeding with this lab, the student should take the time to read
 
-* this
-* that 
-* and the other thing
-
+* Simplifying Dynamic Programming - PDF located in Teams > General > Files > Class Materials > Simplifying Dynamic Programming.pdf
+  * The Jump It Game
+  * Robot in a Grid
+* Section C2.5 - Dynamic Allocation of Arrays (this section is found in C++ Interlude 2); this assignment allocates two-dimensional arrays dynamically in `main` and `google-tests` targets. Thus, if any of this code is confusing, look here for support.
 
 ### Maximum Number of Golden Coins
 
