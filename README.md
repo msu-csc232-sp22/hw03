@@ -1,6 +1,6 @@
-# LHWn - Title
+# HW03 - Further Explorations in Dynamic Programming
 
-_A quick blurb or sub-title text_
+A homework assignment related to dynamic programming in CSC232.
 
 ## Background
 
@@ -10,20 +10,91 @@ Before proceeding with this lab, the student should take the time to read
 * that 
 * and the other thing
 
+
+### Maximum Number of Golden Coins
+
+A table is composed of m x n cells. Each cell contains a number of golden coins. An example is as follows:
+
+```c++
+5    3    9
+7    2    2
+2    3    1
+```
+
+You start at the upper-left cell and want to reach the bottom-right cell. At each step, you can go either down or right one cell. Write a program that uses dynamic programming to find the maximum number of golden coins you can collect.  
+
+The output from your program should display the cache table where the maximum number of golden coins collected on a path from the top-left cell to cell (r, c) is stored in cell (r, c). Also output a message indicating the maximum number of coins on a path from the top-left cell to the right-bottom cell. Sample output for the above grid is as follows (**Note**: you do not have to show borders around the cells, and the leading zeros shown in the first row are just an artifact needed for proper column alignment in this simplified markdown format. Your output **shall not** contain these leading zeros and yet still be right-aligned.):
+
+```bash
+05  08  17
+12  14  19
+14  17  20
+
+Maximum number of golden coins we can collect is 20
+```
+
+The program should read input from an input file. The file contains the description of an unspecified number of tables. The data for each table starts with two numbers representing the number of rows and columns in the table. This is followed by the number of coins on each row. For example, the top table is represented as follows:
+
+```c++
+3  3
+5  3  9
+7  2  2
+2  3  1
+```
+
+Another sample input file with three tables is as follows:
+
+```c++
+3  3
+5  3  9
+7  2  2
+2  3  1
+2  3
+7  2  4
+1  5  1
+4  5
+7  3  4  5  3
+2  1  4  8  2
+9  2  4  3  1
+1  2  3  4  6
+```
+
+For each input table, display the corresponding cache table followed by a message indicating the maximum number of golden coins that we can collect. The following shows the expected output of the `main` target. The tables shown here are the "cost matrices," where each cell contains the maximum number of gold coins that could have been collected on a journey to that cell starting from (0, 0).
+
+```text
+    5    8   17
+   12   14   19
+   14   17   20
+
+Maximum number of golden coins we can collect is 20
+
+    7    9   13
+    8   14   15
+
+Maximum number of golden coins we can collect is 15
+
+    7   10   14   19   22
+    9   11   18   27   29
+   18   20   24   30   31
+   19   22   27   34   40
+
+Maximum number of golden coins we can collect is 40
+```
+
 ## Objective
 
-Upon successful completion of this lab, the student has learned how to
+Upon successful completion of this assignment, the student should know or understand
 
-* do this
-* do that
-* do another thing
+* that problems exhibiting overlapping sub-problems and optimal substructure lend themselves to dynamic programming techniques
+* how to develop state expression used in the development of a dynamic programming solution
+* that either a top-down (memoization) or bottom-up (tabulation) approach may be applied to their solutions which often transform naive recursive solutions into extremely efficient solutions
 
 ## Getting Started
 
-After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/fill-me-in), clone this repository. If you have cloned the repository from the command line prompt, navigate into the newly created directory
+After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/a/KU0MhHnk), clone this repository. If you have cloned the repository from the command line prompt, navigate into the newly created directory
 
 ```bash
-cd labn-github-username
+cd hw03-github-username
 ```
 
 Next, create a branch named `develop`. Please note: The name of this branch **must** be as specified and will be, to the grading scripts, case-sensitive.
@@ -42,15 +113,19 @@ _You may have to type the `q` character to get back to the command line prompt a
 
 ## Tasks
 
-Pol, neuter abactor!
+Compare this problem to the goal of the Jump It game. Use the development of the solution to that game outlined in Lecture to devise a DP solution to this problem. Note the differences too; in the Jump It game, the goal was to _minimize_ a "cost" and here the goal is to _maximize_ a "cost." Also think about your approach: Do you want to tackle this using _memoization_ or _tabulation_? How does that choice affect your design decisions?
 
-### Part 1
+Look for and address all the `TODO` comments in the project; implement the functions in [csc232.h](include/csc232.h). Be sure to remove the `TODO` comments once you've completed the requested task.
 
-Ecce, urbs!
+Once you have made your final changes, commit and push them to GitHub and supply the URL of your repository to the Teams assignment.
 
-### Part n
+There is a GitHub Action that is triggered when you push your commits to GitHub. If you would like to see firsthand what the outcome of that action will be _prior_ to committing/pushing your changes, you can always just run the `run_ctests.sh` script from the command line. NOTE: This assumes you're doing this from a Linux-based shell, e.g., an Ubuntu WSL installation, or a Macintosh terminal window.
 
-Ubi est dexter medicina?
+```bash
+./run_ctest.sh
+```
+
+Alternatively, you can always just run the `google-tests` target too as this is effectively what `ctest` is doing.
 
 ## Submission Details
 
@@ -66,15 +141,15 @@ If you've already set up remote tracking (using the `-u origin develop` switch),
 git push
 ```
 
-As usual, prior to submitting your assignment on Blackboard, be sure that you have committed and pushed your final changes to GitHub. Once your final changes have been pushed, create a pull request that seeks to merge the changes in your `develop` branch into your `master` branch. Once your pull request has been created, submit the URL of your assignment _repository_ (i.e., _not_ the URL of the pull request) Blackboard using a Text Submission. Please note: the timestamp of the submission on Blackboard is used to assess any late penalties if and when warranted, _not_ the date/time you create your pull request. **No exceptions will be granted for this oversight**.
+As usual, prior to submitting your assignment on Blackboard, be sure that you have committed and pushed your final changes to GitHub. Once your final changes have been pushed, create a pull request that seeks to merge the changes in your `develop` branch into your `trunk` branch. Once your pull request has been created, submit the URL of your assignment _repository_ (i.e., _not_ the URL of the pull request) Blackboard using a Text Submission. Please note: the timestamp of the submission on Blackboard is used to assess any late penalties if and when warranted, _not_ the date/time you create your pull request. **No exceptions will be granted for this oversight**.
 
 ### Due Date
 
-Your assignment submission is due by 11:59 PM, ....
+Your assignment submission is due by 11:59 PM, Saturday, 05-March, 2022.
 
 ### Grading Rubric
 
-This assignment is worth **3 points**.
+This assignment is worth **5 points**.
 
 Criteria          | Exceeds Expectations        | Meets Expectations             | Below Expectations | Failure                                                 |
 ------------------|-----------------------------|--------------------------------|--------------------|---------------------------------------------------------|
@@ -86,6 +161,6 @@ Correctness^ (60%)| All unit tests pass         | At least 80% of the unit tests
 
 ### Late Penalty
 
-* In the first 24 hour period following the due date, this lab will be penalized 0.6 point meaning the grading starts at 2.4 (out of 3 total possible) points.
-* In the second 24 hour period following the due date, this lab will be penalized 1.2 points meaning the grading starts at 1.8 (out of 3 total possible) points.
-* After 48 hours, the assignment will not be graded and thus earns no points, i.e., 0 out of 3 possible points.
+* In the first 24 hour period following the due date, this assignment will be penalized 1 point meaning the grading starts at 4 (out of 5 total possible) points.
+* In the second 24 hour period following the due date, this assignment will be penalized 2 points meaning the grading starts at 3 (out of 5 total possible) points.
+* After 48 hours, the assignment will not be graded and thus earns no points, i.e., 0 out of 5 possible points.

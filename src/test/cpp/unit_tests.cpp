@@ -16,11 +16,11 @@
 
 static int possiblePoints{0};
 static int earnedPoints{0};
-static const int PC_POINTS{2}; // Set to 2 for labs, 3 for homework 
+static const int PC_POINTS{3}; // Set to 2 for labs, 3 for homework 
 
 namespace
 {
-    class SampleTestFixture : public ::testing::Test
+    class MaxGoldCoinsTestFixture : public ::testing::Test
     {
     protected:
         /**
@@ -29,26 +29,117 @@ namespace
          */
         void SetUp() override
         {
-            // intentionally empty in this test
+            // create the array needed... a dynamic, two-dimensional array is an int**
+            // Create the rows
+            first_matrix = new int *[3];
+            // Create the columns
+            for (int i{0}; i < 3; ++i)
+            {
+                first_matrix[i] = new int[3];
+            }
+            first_matrix[0][0] = 5; first_matrix[0][1] = 3; first_matrix[0][2] = 9;
+            first_matrix[1][0] = 7; first_matrix[1][1] = 2; first_matrix[1][2] = 2;
+            first_matrix[2][0] = 2; first_matrix[2][1] = 3; first_matrix[2][2] = 1;
+
+            second_matrix = new int *[2];
+            // Create the columns
+            for (int i{0}; i < 2; ++i)
+            {
+                second_matrix[i] = new int[3];
+            }
+            second_matrix[0][0] = 7; second_matrix[0][1] = 2; second_matrix[0][2] = 4;
+            second_matrix[1][0] = 1; second_matrix[1][1] = 5; second_matrix[1][2] = 1;
+
+            third_matrix = new int *[4];
+            // Create the columns
+            for (int i{0}; i < 4; ++i)
+            {
+                third_matrix[i] = new int[5];
+            }
+            third_matrix[0][0] = 7; third_matrix[0][1] = 3; third_matrix[0][2] = 4; third_matrix[0][3] = 5; third_matrix[0][4] = 3;
+            third_matrix[1][0] = 2; third_matrix[1][1] = 1; third_matrix[1][2] = 4; third_matrix[1][3] = 8; third_matrix[1][4] = 2;
+            third_matrix[2][0] = 9; third_matrix[2][1] = 2; third_matrix[2][2] = 3; third_matrix[2][3] = 3; third_matrix[2][4] = 1;
+            third_matrix[3][0] = 1; third_matrix[3][1] = 2; third_matrix[3][2] = 3; third_matrix[3][3] = 4; third_matrix[3][4] = 6;
         }
 
         /**
          * Code here will be called immediately after each test
          * right before the destructor...
          */
-        void TearDown() override {
-            // intentionally empty in this test
+        void TearDown() override 
+        {
+            for (int i{0}; i < 3; ++i)
+            {
+                delete[] first_matrix[i];
+                first_matrix[i] = nullptr;
+            }
+            delete[] first_matrix;
+            first_matrix = nullptr;
+
+            for (int i{0}; i < 2; ++i)
+            {
+                delete[] second_matrix[i];
+                second_matrix[i] = nullptr;
+            }
+            delete[] second_matrix;
+            second_matrix = nullptr;
+
+            for (int i{0}; i < 4; ++i)
+            {
+                delete[] third_matrix[i];
+                third_matrix[i] = nullptr;
+            }
+            delete[] third_matrix;
+            third_matrix = nullptr;
         }
 
         // Objects declared below can be used by all tests in this test fixture.
-
+        int **first_matrix{};
+        int **second_matrix{};
+        int **third_matrix{};
     };
 
-    TEST_F(SampleTestFixture, NameOfTest)
+    TEST_F(MaxGoldCoinsTestFixture, FirstMatrix)
     {
         possiblePoints += 1;
 
-        EXPECT_EQ(true, true);
+        int rows{3};
+        int cols{3};
+        int expected{20};
+        int actual{ csc232::MaxNumCoins( first_matrix, rows, cols )};
+        EXPECT_EQ(expected, actual);
+
+        if (!HasFailure()) 
+        {
+            earnedPoints += 1;
+        }
+    } // TEST_F
+
+    TEST_F(MaxGoldCoinsTestFixture, SecondMatrix)
+    {
+        possiblePoints += 1;
+
+        int rows{2};
+        int cols{3};
+        int expected{15};
+        int actual{ csc232::MaxNumCoins( second_matrix, rows, cols )};
+        EXPECT_EQ(expected, actual);
+
+        if (!HasFailure()) 
+        {
+            earnedPoints += 1;
+        }
+    } // TEST_F
+
+    TEST_F(MaxGoldCoinsTestFixture, ThirdMatrix)
+    {
+        possiblePoints += 1;
+
+        int rows{4};
+        int cols{5};
+        int expected{40};
+        int actual{ csc232::MaxNumCoins( third_matrix, rows, cols )};
+        EXPECT_EQ(expected, actual);
 
         if (!HasFailure()) 
         {
@@ -56,18 +147,6 @@ namespace
         }
     } // TEST_F
 } // namespace for fixture
-
-#if TEST_TASK1
-
-#endif
-
-#if TEST_TASK2
-
-#endif
-
-#if TEST_TASK3
-
-#endif
 
 int main(int argc, char **argv) 
 {

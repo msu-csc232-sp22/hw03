@@ -63,11 +63,83 @@ using std::setw;
  */
 namespace csc232
 {
-    // Add any user-defined functions prescribed in your assignment below
+    // Update or add any user-defined functions prescribed in your assignment below.
+
+    /**
+     * Display the contents of a two-dimensional integer array.
+     *
+     * @param table the two dimensional array whose contents is displayed in tabular
+     *       format
+     * @param rows the number of rows in the two dimensional array
+     * @param cols the number of columns in the two dimensional array
+     * @post The contents of table are displayed in tabular format to the standard
+     *       output device. The contents of the table are unchanged.
+     */
+    void Display( int **table, int rows, int cols )
+    {
+        // TODO: Display the data in the given array in tabular format.
+        // Each value should be printed in a field width of 5. Numbers should be
+        // right-aligned in each column
+    }
+
+    /**
+     * Calculate the maximum number of gold coins collected in traveling from the
+     * upper left-hand corner of a table to the bottom right-hand corner.
+     *
+     * @param grid the two dimensional array whose contents are some number of gold
+     *        coins in each cell
+     * @param rows the number of rows in the two dimensional array
+     * @param cols the number of columns in the two dimensional array
+     * @return The maximum number of gold coins that can be collected in traversing
+     *         the table from the upper left-hand corner to the lower right-hand
+     *         corner
+     * @post The contents of the table are unchanged.
+     */
+    int MaxNumCoins( int **grid, int rows, int cols ) 
+    {
+        // TODO: Compute this value using a dynamic programming approach.
+        // Adjust the return value accordingly as this is merely a stub.
+        return 0;
+    }
+
+    /**
+     * Calculate the maximum value between two integers.
+     *
+     * @param a one integer in the comparison
+     * @param b the other integer in the comparison
+     * @return The maximum of a and b is returned.
+     */
+    int Max( int a, int b ) {
+        // TODO: Compute this value. Adjust the return value accordingly as this is merely a stub.
+        return 0;
+    }
 
     // DO NOT Modify anything below this line
 
-    int Preamble(int argc, char* argv[]);
+    /**
+     * @brief Open a data file, whose name may appear in one of the given command line arguments.
+     * 
+     * @param argc the number of the command line arguments captured by the os for some target
+     * @param argv an array of the command line arguments capture by the os for some target
+     * @return an ifstream to read the desired file given as an argument.
+     */
+    std::ifstream OpenDataFile( int argc, char* argv[] );
+
+    /**
+     * @brief Process the given input file stream in some manner.
+     * 
+     * @param data_file an input file stream to process
+     */
+    void ProcessDataFile( std::ifstream& data_file );
+
+    /**
+     * @brief An action to take prior to running some function.
+     * 
+     * @param argc the number of command line arguments
+     * @param argv an array of command line arguments
+     * @return int SUCCESS or FAILURE system status exit codes.
+     */
+    int Preamble( int argc, char* argv[] );
 
     /**
      * @brief Generate a quasi-random UUID.
